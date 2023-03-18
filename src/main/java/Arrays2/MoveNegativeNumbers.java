@@ -4,13 +4,14 @@ public class MoveNegativeNumbers {
     public static void move(int[] ar) {
         int j = 0;
         for (int i = 0; i < ar.length; i++) {
-            if (ar[i] < 0) {
+            if (ar[i] < 0 && i != j) {
                 int t = ar[i];
                 ar[i] = ar[j];
                 ar[j] = t;
+                j++;
             }
-            System.out.println("YES");
         }
+
 
     }
 
