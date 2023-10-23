@@ -22,13 +22,13 @@ public class QueryAndMatirx {
             char dimension = query.charAt(1);
             int index = query.charAt(2) - '0';
 
-            if (queryType == '1') {
+            if (queryType == 1) {
                 if (dimension == 'R') {
                     flipRow(mat, index, n);
                 } else if (dimension == 'C') {
                     flipColumn(mat, index, m);
                 }
-            } else if (queryType == '2') {
+            } else if (queryType == 2) {
                 int count = 0;
                 if (dimension == 'R') {
                     count = countZeroesInRow(mat, index, n);
@@ -43,23 +43,23 @@ public class QueryAndMatirx {
     }
 
     //function to flip a row
-    static void flipRow(int[][] matrix, int rowIndex, int totalColumns) {
-        for (int i = 0; i < totalColumns; i++) {
-            matrix[rowIndex][i] = 1 - matrix[rowIndex][i];
+    static void flipRow(int[][] matrix, int rowIndex, int n) {
+        for (int j = 0; j < n; j++) {
+            matrix[rowIndex][j] ^= 1;
         }
     }
 
     //function to flip a column
-    static void flipColumn(int[][] matrix, int columnIndex, int totalRows) {
-        for (int i = 0; i < totalRows; i++) {
-            matrix[i][columnIndex] = 1 - matrix[i][columnIndex];
+    static void flipColumn(int[][] matrix, int columnIndex, int m) {
+        for (int i = 0; i < m; i++) {
+            matrix[i][columnIndex] ^= 1;
         }
     }
 
     // function to count zeros in a row
-    static int countZeroesInRow(int[][] matrix, int rowIndex, int totalColumns) {
+    static int countZeroesInRow(int[][] matrix, int rowIndex, int n) {
         int count = 0;
-        for (int j = 0; j < totalColumns; j++) {
+        for (int j = 0; j < n; j++) {
             if (matrix[rowIndex][j] == 0) {
                 count++;
             }
@@ -68,9 +68,9 @@ public class QueryAndMatirx {
     }
 
     //function to count zeroes in column
-    static int countZerosInColumn(int[][] matrix, int colIndex, int totalRows) {
+    static int countZerosInColumn(int[][] matrix, int colIndex, int m) {
         int count = 0;
-        for (int i = 0; i < totalRows; i++) {
+        for (int i = 0; i < m; i++) {
             if (matrix[i][colIndex] == 0) {
                 count++;
             }
