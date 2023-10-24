@@ -3,8 +3,7 @@ package DSA.Milestone3.recursion2;
 public class TowerOfHanoi {
     public static void towerOfHanoi(int disks, char source, char auxiliary, char destination) {
         // Write your code here
-        if (disks == 1) {
-            System.out.println(source + " " + destination);
+        if (disks == 0) {
             return;
         }
         towerOfHanoi(disks - 1, source, destination, auxiliary);
