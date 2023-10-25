@@ -38,7 +38,7 @@ public class QuickSort {
         int j = endIndex;
         while (i < j) {
             if (input[i] < pivotElement) {
-                i++;
+               i++;
             } else if (input[j] >= pivotElement) {
                 j--;
             } else {
