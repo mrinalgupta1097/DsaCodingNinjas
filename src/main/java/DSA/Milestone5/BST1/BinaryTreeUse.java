@@ -1,4 +1,4 @@
-package DSA.Milestone4.BST1;
+package DSA.Milestone5.BST1;
 
 public class BinaryTreeUse {
     public static void main(String[] args) {
