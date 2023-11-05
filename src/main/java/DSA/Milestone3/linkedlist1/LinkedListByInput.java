@@ -30,9 +30,38 @@ public class LinkedListByInput {
         }
         return head;
     }
+    /*
+    * Take input optimized
+    */
+    public static Node<Integer> takeInput_Optimized() {
+        Scanner s = new Scanner(System.in);
+        int data = s.nextInt();
+        Node<Integer> head = null, tail = null;
+        while (data != -1) {
+            Node<Integer> currentNode = new Node<>(data);
+            if (head == null) {
+                /*
+                 * it is the first element
+                 * so current node will be head and tail of linked list*/
+                head = currentNode;
+                tail = currentNode;
+            } else {
+                /*
+                * when head is there and an element is added
+                * tail( currently same as head) will point to new node created (that is current node)*/
+                tail.next = currentNode;
+                // and also tail will be shifted to next node
+                tail = currentNode;
+            }
+            data = s.nextInt();
+        }
+        return head;
+    }
 
     public static void main(String[] args) {
-        Node<Integer> head = takeInput();
-        System.out.println(head.data);
+//        Node<Integer> head = takeInput();
+//        System.out.println(head.data);
+        Node<Integer> head1 = takeInput_Optimized();
+        System.out.println(head1.data);
     }
 }
