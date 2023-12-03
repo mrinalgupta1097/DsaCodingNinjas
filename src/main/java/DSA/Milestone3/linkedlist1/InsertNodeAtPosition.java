@@ -3,37 +3,31 @@ package DSA.Milestone3.linkedlist1;
 public class InsertNodeAtPosition {
 
     public static Node<Integer> insert(Node<Integer> head, int pos, int data) {
-        int length = 0;
-        while(head != null){
-            length++;
-            head= head.next;
+        if (pos==0)
+        {
+            Node<Integer> newNode=new Node<>(data);
+            newNode.next=head;
+            head=newNode;
         }
-        if(pos > length){
-            return head;
-        }
-        ///create a new node to be inserted
-        Node<Integer> newNode = new Node<>(data);
-        //handle zero position case
-        if (pos == 0) {
-            newNode.next = head;
-            head = newNode;
-            return head;
-        } else {
-            int index = 0;
-            Node<Integer> previous = head;
-            //traverse to node previous than position
-            while (index < (pos - 1) && previous.next != null) {
-                previous = previous.next;
-                index++;
+        else
+        {
+            int i=0;
+            Node<Integer> n=head;
+            for (i=0;i<pos-1 && n!=null;i++)
+            {
+                //System.out.println("At node: "+i);
+                n=n.next;
             }
-            if (previous != null) {
-                //now, the new node will point to next node not the previous node(head in our case)
-                newNode.next = previous.next;
-                //previous node will point to newNode
-                previous.next = newNode;
+            //System.out.println("At node: "+i);
+            if (n!=null && pos>0)
+            {
+                Node<Integer> newNode=new Node<>(data);
+                newNode.next=n.next;
+                n.next=newNode;
             }
         }
-        return newNode;
+
+        return head;
     }
 
 }
