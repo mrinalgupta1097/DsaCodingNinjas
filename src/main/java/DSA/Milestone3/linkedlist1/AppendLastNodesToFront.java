@@ -2,40 +2,32 @@ package DSA.Milestone3.linkedlist1;
 
 public class AppendLastNodesToFront {
     public static Node<Integer> appendLastNToFirst(Node<Integer> head, int n) {
-        if (head == null || n <= 0) {
-            return head; // No changes needed for empty list or n <= 0.
+        Node<Integer> node = head, checkNode = null, newHead = null;
+        if (n == 0) {
+            return head; // No changes needed for empty list or.
         }
+
         //find length of linked list
-        int length = 0;
-        Node<Integer> currentElement = head;
-        while (currentElement.next != null) {
-            currentElement = currentElement.next;
-            length++;
-        }
-        if (n >= length) {
+        int length = LengthOfLinkedList.findLengthOfLL(head);
+        if (n > length) {
             return head;// No changes needed for n >= length.
         }
-        int positionToBreak = length - n;
-        currentElement = head;
-        Node<Integer> previousElement = null;
-        // Move currentElement to the node just before the n-th node from the end.
-        for (int i = 1; i < positionToBreak; i++) {
-            previousElement = currentElement;
-            currentElement = currentElement.next;
+        n = length - n;  //remaining elements, suppose length = 5, elements to append 2, n = 3;
+        //reach to the n
+        node = head; // first reset node to head as it was on last node
+        for(int i = 0; i < n-1; i++){
+            node = node.next;
         }
-
-        Node<Integer> newHead = currentElement;
-        if(previousElement != null){
-            previousElement.next = null;
+        // now node is at n (length - elements to be appended)
+        checkNode = node.next;
+        //checkNode.next will be the new head after appending
+        newHead = checkNode;
+        //now join the last of original linked list to head of original linked list so that new node can be linked
+        while( checkNode.next != null){
+            checkNode = checkNode.next;
         }
-
-        // Find the last node in the original list and connect it to the old head.
-        Node<Integer> lastNode = newHead;
-        while (lastNode.next != null) {
-            lastNode = lastNode.next;
-        }
-        lastNode.next = head;
-
-        return newHead;
+        checkNode.next = head; // first make then break
+        head = newHead;
+        return head;
     }
 }
